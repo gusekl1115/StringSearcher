@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class StringSearcher {
 	private String word;
 	private String fileName;
-
+	
+	// Constructor checks if the initial input argument is search, 
+	// then saves the search-word and the filename in private attributes
 	public StringSearcher(String input) {
 		String[] inputs = input.split(" ");
 		if (inputs[0].equalsIgnoreCase("search")) {
@@ -16,6 +18,7 @@ public class StringSearcher {
 		}
 	}
 	
+	//Search function that prints the lines containing the specified word
 	public void search() throws FileNotFoundException {
 		Scanner scan = new Scanner(new File(fileName));
 		while(scan.hasNextLine()) {
@@ -26,13 +29,13 @@ public class StringSearcher {
 		}
 	}
 	
+	// main method creates Stringsearcher object and executes the task
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		StringSearcher searcher = new StringSearcher(scan.nextLine());
 		try {
 			searcher.search();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			scan.close();
 			e.printStackTrace();
 		}
